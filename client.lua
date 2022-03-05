@@ -13,30 +13,6 @@ AddEventHandler('QBCore:Client:OnJobUpdate', function(job)
 	PlayerData.job = job
 end)
 
-
-
-
-RegisterCommand('livery', function(source, args, rawCommand)
-    local ped = GetPlayerPed(-1)
-    local veh = GetVehiclePedIsIn(ped, false)
-    local livery = tonumber(args[1])
-    local liveryCount = GetVehicleLiveryCount(veh)
-    if livery ~= nil then
-        if PlayerData.job.name == "police" then
-            if GetVehicleClass(veh) == 18 then
-            if livery <= liveryCount then
-                SetVehicleLivery(veh, livery)
-            else
-            end
-        else
-        end
-        else
-        end
-    else
-    end
-end, false)
-
-
 nvr_pursuit = function()
     if PlayerData.job.name == "police" then
         QBCore.Functions.Notify('Pit Ve Ram İzni İstenildi')
@@ -67,11 +43,6 @@ nvr_oxford = function ()
 end
 
 
-
-CreateThread(function()   
-    StartAudioScene("CHARACTER_CHANGE_IN_SKY_SCENE");
-    SetAudioFlag("PoliceScannerDisabled",true);
-end)
 
 
 RegisterCommand("pursuit", function()
